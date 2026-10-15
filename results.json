@@ -1,0 +1,120 @@
+{
+  "model": "openai/clip-vit-base-patch32",
+  "device": "cpu",
+  "dataset": "UC Merced land use (21 classes x 100, 256px aerial)",
+  "n_images": 2100,
+  "split": "stratified 50 train / 50 test per class",
+  "zero_shot": {
+    "top1_all": 0.6729,
+    "top3_all": 0.8757,
+    "top1_test": 0.661,
+    "top1_single_prompt_all": 0.581,
+    "templates": 4
+  },
+  "linear_probe": {
+    "top1_test": 0.9295,
+    "train_per_class": 50,
+    "few_shot_curve": {
+      "1": 0.6667,
+      "2": 0.7149,
+      "5": 0.8184,
+      "10": 0.8689,
+      "20": 0.9063,
+      "50": 0.9295
+    }
+  },
+  "per_class": {
+    "agricultural": {
+      "zero_shot": 0.72,
+      "probe": 0.98
+    },
+    "airplane": {
+      "zero_shot": 0.98,
+      "probe": 0.98
+    },
+    "baseballdiamond": {
+      "zero_shot": 0.94,
+      "probe": 0.88
+    },
+    "beach": {
+      "zero_shot": 0.98,
+      "probe": 1.0
+    },
+    "buildings": {
+      "zero_shot": 0.66,
+      "probe": 0.94
+    },
+    "chaparral": {
+      "zero_shot": 0.28,
+      "probe": 1.0
+    },
+    "denseresidential": {
+      "zero_shot": 0.02,
+      "probe": 0.66
+    },
+    "forest": {
+      "zero_shot": 0.96,
+      "probe": 0.96
+    },
+    "freeway": {
+      "zero_shot": 0.64,
+      "probe": 0.82
+    },
+    "golfcourse": {
+      "zero_shot": 0.96,
+      "probe": 0.98
+    },
+    "harbor": {
+      "zero_shot": 0.3,
+      "probe": 1.0
+    },
+    "intersection": {
+      "zero_shot": 0.86,
+      "probe": 0.92
+    },
+    "mediumresidential": {
+      "zero_shot": 0.0,
+      "probe": 0.84
+    },
+    "mobilehomepark": {
+      "zero_shot": 0.62,
+      "probe": 0.94
+    },
+    "overpass": {
+      "zero_shot": 0.86,
+      "probe": 0.9
+    },
+    "parkinglot": {
+      "zero_shot": 0.9,
+      "probe": 0.98
+    },
+    "river": {
+      "zero_shot": 0.68,
+      "probe": 0.92
+    },
+    "runway": {
+      "zero_shot": 0.06,
+      "probe": 0.92
+    },
+    "sparseresidential": {
+      "zero_shot": 0.74,
+      "probe": 1.0
+    },
+    "storagetanks": {
+      "zero_shot": 0.72,
+      "probe": 0.92
+    },
+    "tenniscourt": {
+      "zero_shot": 1.0,
+      "probe": 0.98
+    }
+  },
+  "thermal_detector": {
+    "frames": 200,
+    "precision": 1.0,
+    "recall": 0.9362,
+    "severity_agreement": 0.9545,
+    "latency_p50_ms": 0.6
+  },
+  "clip_latency_ms_per_image_cpu": 61.8
+}
