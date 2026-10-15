@@ -3,7 +3,7 @@
 [![ci](https://github.com/D-L-Narayana/aerovision/actions/workflows/ci.yml/badge.svg)](https://github.com/D-L-Narayana/aerovision/actions)
 ![pytorch](https://img.shields.io/badge/PyTorch-CLIP%20ViT--B%2F32-ee4c2c) ![hf](https://img.shields.io/badge/Hugging%20Face-transformers%20%2B%20transformers.js-ffcc4d) ![license](https://img.shields.io/badge/license-MIT-blue)
 
-**Live demo (CLIP runs in your browser):** https://aerovision-vlm.vercel.app
+**Live demo (CLIP runs in your browser):** https://d-l-narayana.github.io/aerovision
 
 AeroVision is the *perception layer* for an autonomous drone-ops agent. It answers two questions about a frame —
 *what am I looking at?* (CLIP scene understanding with zero-shot and linear-probe heads) and *is anything wrong?*
