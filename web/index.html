@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AeroVision — vision-language perception for aerial inspection</title>
+<meta name="description" content="CLIP ViT-B/32 zero-shot + linear-probe aerial scene understanding and radiometric hotspot detection running in the browser, emitting schema-validated inspection reports for drone agents." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header><div class="wrap"><div class="brand"><span class="logo">◉</span> AeroVision <span class="tag">in-browser demo</span></div>
+<nav><a href="https://github.com/D-L-Narayana/aerovision" target="_blank" rel="noopener">GitHub ↗</a></nav></div></header>
+<main class="wrap">
+  <section class="hero">
+    <h1>Vision-language perception that drone agents can act on</h1>
+    <p><b>CLIP ViT-B/32</b> (Hugging Face transformers.js, WASM) classifies aerial scenes zero-shot with a 4-template prompt
+      ensemble, a <b>linear probe trained on frozen CLIP features</b> lifts accuracy on the 21 UC Merced land-use classes, and a
+      deterministic <b>radiometric hotspot detector</b> turns thermal frames into SOP-graded anomalies. Everything is emitted as a
+      schema-validated <code>InspectionReport</code> — the same contract the Python package hands to an agent tool loop.</p>
+    <div id="status" class="status">Loading CLIP…</div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>1 · Aerial scene understanding</h2>
+      <p class="muted small">Drop an aerial / drone image, or pick a UC Merced sample. Zero-shot and probe heads run side by side.</p>
+      <div id="drop" class="drop">Drop image here or <label class="link">browse<input id="file" type="file" accept="image/*" hidden /></label></div>
+      <div id="samples" class="samples"></div>
+      <div class="row2"><canvas id="preview" width="224" height="224"></canvas>
+        <div class="bars"><div class="bars-head"><span>zero-shot (prompt ensemble)</span><span id="zs-lat" class="muted"></span></div><div id="zs"></div>
+          <div class="bars-head"><span>linear probe (50 img/class)</span></div><div id="pr"></div></div></div>
+      <div id="sens" class="sens"></div>
+    </div>
+    <div class="card">
+      <h2>2 · Thermal anomaly detection</h2>
+      <p class="muted small">Synthetic radiometric frame (°C). Hotspot ≥10 °C above median = medium, ≥20 °C = high; whole-string ≥5 °C = hot string. Same algorithm as <code>aerovision/thermal.py</code>.</p>
+      <div class="row2"><canvas id="thermal" width="256" height="192"></canvas>
+        <div><button id="regen" type="button">New frame</button><div id="spots" class="spots"></div></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3 · InspectionReport <span class="muted">(validated JSON → agent tool result)</span></h2>
+    <pre id="report">{ }</pre>
+  </section>
+
+  <section class="grid">
+    <div class="card"><h2>Benchmark <span class="muted">(Python, PyTorch CPU)</span></h2><table id="bench"></table><p id="bench-foot" class="muted small"></p></div>
+    <div class="card"><h2>Few-shot probe curve</h2><canvas id="curve" width="420" height="200"></canvas><p class="muted small">Test top-1 vs labelled images per class (mean of 3 seeds). Zero-shot shown as dashed line.</p></div>
+  </section>
+</main>
+<footer class="wrap muted small">Built by D L Narayana · UC Merced Land Use dataset (Yang &amp; Newsam, 2010) · thermal frames synthetic · MIT</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

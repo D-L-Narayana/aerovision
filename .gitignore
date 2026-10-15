@@ -1,0 +1,8 @@
+data/ucm/
+data/ucm_clip_embeddings.npz
+data/thermal/frames.npz
+__pycache__/
+*.pyc
+.pytest_cache/
+.vercel
+evals/run.log
